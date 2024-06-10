@@ -3,7 +3,7 @@ import random
 import json
 import matplotlib.pyplot as plt
 import pickle
-from pyboy import PyBoy
+from pyboy.pyboy import PyBoy
 from pyboy.utils import WindowEvent
 import time
 
@@ -98,14 +98,31 @@ def avaliar_fitness(individuo, ambiente):
 def iniciar_individuos(populacao):
     return [Individuo() for _ in range(populacao)]
 
-def selecao(individuos):
-    # TODO: Implementar seleção por torneio
+def selecao(populacao, qtd_pais , tamanho_torneio, ambiente):
+    pais_selecionados = []
+    for _ in range(qtd_pais//2):
+        candidatos_torneio = random.sample(populacao, tamanho_torneio)
+        casal = torneio(candidatos_torneio, 2)
+        pais_selecionados.append(casal)
+    return pais_selecionados
     
+def torneio(candidatos):
+    individuo_mais_apto = max(candidatos, key=candidatos.fitness)
+    def filtro(e):
+        return e != individuo_mais_apto
+    candidatos = list(map(filtro, candidatos))
+    individuo_segundo_mais_apto = max(candidatos, key=candidatos.fitness)
+    casal = [individuo_mais_apto, individuo_segundo_mais_apto]
+    return casal
 def cruzamento(pai1, pai2):
-    # TODO: Implementar cruzamento
-
-def mutacao(individuo, taxa_mutacao=0.1):
-    # TODO: Implementar mutação
+        ponto_cruzamento = random.randint(1, len(pai1) - 1)
+        filho = pai1[:ponto_cruzamento] + pai2[ponto_cruzamento:]
+        return filho 
+def mutacao(individuo):
+    mutacao_quantidade = random.randint(1, 2)
+    mutacao_valor = random.randint(-1,1)
+    gene_mutado = gene + mutacao_valor * mutacao_quantidade
+    return gene_mutado
 
 def imprimir_acoes_individuo(individuo):
     nomes_acoes = ["esquerda", "direita", "A"]

@@ -1,0 +1,30 @@
+Collecting setuptools
+  Using cached setuptools-69.5.1-py3-none-any.whl.metadata (6.2 kB)
+Collecting cython
+  Using cached Cython-3.0.10-cp312-cp312-win_amd64.whl.metadata (3.2 kB)
+Requirement already satisfied: numpy in c:\users\rubeus\appdata\local\programs\python\python312\lib\site-packages (1.26.4)
+Collecting pysdl2
+  Downloading PySDL2-0.9.16.tar.gz (773 kB)
+     -------------------------------------- 773.5/773.5 kB 2.0 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pysdl2-dll
+  Downloading pysdl2_dll-2.30.2-py2.py3-none-win_amd64.whl.metadata (4.0 kB)
+Using cached setuptools-69.5.1-py3-none-any.whl (894 kB)
+Using cached Cython-3.0.10-cp312-cp312-win_amd64.whl (2.8 MB)
+Downloading pysdl2_dll-2.30.2-py2.py3-none-win_amd64.whl (4.1 MB)
+   ---------------------------------------- 4.1/4.1 MB 3.6 MB/s eta 0:00:00
+Building wheels for collected packages: pysdl2
+  Building wheel for pysdl2 (pyproject.toml): started
+  Building wheel for pysdl2 (pyproject.toml): finished with status 'done'
+  Created wheel for pysdl2: filename=PySDL2-0.9.16-py3-none-any.whl size=580378 sha256=411986937771616b6daec77ddea130ea3b9e79079e8da8ad8dee701e0f5fada8
+  Stored in directory: c:\users\rubeus\appdata\local\pip\cache\wheels\f6\6d\8c\12262c40847a236f5b3e6ca6ebf49c1f3eb5e1b05e8648117c
+Successfully built pysdl2
+Installing collected packages: pysdl2-dll, pysdl2, setuptools, cython
+Successfully installed cython-3.0.10 pysdl2-0.9.16 pysdl2-dll-2.30.2 setuptools-69.5.1
