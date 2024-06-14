@@ -17,7 +17,7 @@ class Ambiente:
 
     def calcular_fitness(self):
         # TODO: Pode mudar o cálculo do fitness
-        return self.mario.score + 2.3 * self.mario.level_progress + self.mario.time_left
+        return self.mario.score + 2 * self.mario.level_progress + self.mario.time_left
 
     def fim_de_jogo(self):
         return self.mario.lives_left == 1 or self.mario.score < 0
@@ -65,8 +65,8 @@ class Ambiente:
 class Individuo:
     # TODO: Pode mudar a quantidade de ações e a duração
     def __init__(self):
-        self.acoes = [(random.randint(0, 2), random.randint(1, 10)) for _ in range(5000)]
-        self.fitness = 0
+        self.acoes = [(random.randint(1, 4), random.randint(10, 12)) for _ in range(5000)]
+        self.fitness = 20
 
     # TODO: Fique à vontade para mudar a função de avaliação e adicionar/remover parâmetros
     def avaliar(self, ambiente):
@@ -98,11 +98,11 @@ def avaliar_fitness(individuo, ambiente):
 def iniciar_individuos(populacao):
     return [Individuo() for _ in range(populacao)]
 
-def selecao(populacao, qtd_pais , tamanho_torneio, ambiente):
+def selecao(populacao, qtd_pais , tamanho_torneio):
     pais_selecionados = []
     for _ in range(qtd_pais//2):
         candidatos_torneio = random.sample(populacao, tamanho_torneio)
-        casal = torneio(candidatos_torneio, 2)
+        casal = torneio(candidatos_torneio)
         pais_selecionados.append(casal)
     return pais_selecionados
     
@@ -141,7 +141,7 @@ def algoritmo_genetico(populacao, ambiente, geracoes=100):
             individuo.fitness = avaliar_fitness(individuo, ambiente)
             print(f"Fitness: {individuo.fitness}")
 
-        selecionadas = selecao(populacao)
+        selecionadas = selecao(populacao, 2, 200)
         descendentes = []
         while len(descendentes) < len(populacao) - len(selecionadas):
             pai1, pai2 = random.sample(selecionadas, 2)
