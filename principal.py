@@ -17,7 +17,7 @@ class Ambiente:
 
     def calcular_fitness(self):
         # TODO: Pode mudar o cálculo do fitness
-        return self.mario.score + 2 * self.mario.level_progress + self.mario.time_left
+        return self.mario.score + 2.3 * self.mario.level_progress + self.mario.time_left
 
     def fim_de_jogo(self):
         return self.mario.lives_left == 1 or self.mario.score < 0
@@ -120,9 +120,12 @@ def cruzamento(pai1, pai2):
         return filho 
 def mutacao(individuo):
     mutacao_quantidade = random.randint(1, 2)
-    mutacao_valor = random.randint(-1,1)
-    gene_mutado = gene + mutacao_valor * mutacao_quantidade
-    return gene_mutado
+    genes_mutaveis = random.sample(range(len(individuo)), mutacao_quantidade)
+    for i in genes_mutaveis:
+        valor_atual = individuo[i]
+        valor_novo = valor_atual + random.randint(-1, 1)
+        individuo[i] = valor_novo
+    return individuo
 
 def imprimir_acoes_individuo(individuo):
     nomes_acoes = ["esquerda", "direita", "A"]
